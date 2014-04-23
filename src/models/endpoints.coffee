@@ -2,6 +2,7 @@ ce = require 'cloneextend'
 fs = require 'fs'
 ejs = require 'ejs'
 path = require 'path'
+moment = require 'moment'
 Endpoint = require './endpoint'
 
 NOT_FOUND = "Endpoint with the given id doesn't exist."
@@ -79,6 +80,7 @@ found = (endpoint, captures, callback) ->
   if response.file?
     try response.body = fs.readFileSync path.resolve(@datadir, response.file)
 
+  captures.moment = moment
   applyTemplating response, captures
 
   if parseInt response.latency

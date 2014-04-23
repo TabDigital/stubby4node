@@ -50,7 +50,8 @@
     "async": ">=0.2.7",
     "node-static": ">=0.6.4",
     "cloneextend": ">=0.0.3",
-    "ejs": ">=0.8.4"
+    "ejs": ">=0.8.4",
+    "moment": "^2.6.0"
   },
   "devDependencies": {
     "sinon": "~1.8.1",
