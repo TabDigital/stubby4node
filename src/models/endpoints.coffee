@@ -77,10 +77,13 @@ found = (endpoint, captures, callback) ->
   response.body = new Buffer (response.body ? 0) , 'utf8'
   response.headers['x-stubby-resource-id'] = endpoint.id
 
+  captures.moment = moment
+
   if response.file?
+    # attempt token replacement for file name
+    applyTemplating response, captures
     try response.body = fs.readFileSync path.resolve(@datadir, response.file)
 
-  captures.moment = moment
   applyTemplating response, captures
 
   if parseInt response.latency
